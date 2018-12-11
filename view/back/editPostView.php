@@ -61,11 +61,8 @@
 
   		autosave_interval:"30s"
 	});
-	// tinymce.init({
-	// 	selector:'#title_tinymce',
-	// 	width: 800,
-	// 	height 150
-	// });
+
+
 </script>
 <?php $content = ob_get_clean(); ?>
 <?php require_once('view/template.php'); ?>

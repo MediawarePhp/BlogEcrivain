@@ -80,6 +80,11 @@ function addPost($title,$content){
 
 }
 
+function deletePost(){
+	$postManager = new PostManager();
+	
+}
+
 function test_input($data) {
 		  $data = trim($data);
 		  $data = stripslashes($data);

@@ -7,9 +7,12 @@ try{
 	if (isset($_GET['action'])) {
 	    if ($_GET['action'] == 'listPosts') {
 	    	if (isset($_GET['count']) && $_GET['count'] >= 0) {
+
 	    		$start = $_GET['count']*6;
 	    		listPosts($start);
-	    	}else{
+
+	    	} else {
+
 	    		$start = 0;
 	    		listPosts($start);
 	    	}
@@ -17,6 +20,7 @@ try{
 	    }
 	    elseif ($_GET['action'] == 'post') {
 	        if (isset($_GET['id']) && $_GET['id'] > 0) {
+
 	            post();
 	        }
 	        else {
@@ -26,6 +30,7 @@ try{
 	    elseif ($_GET['action'] == 'addComment') {
 	    	if(isset($_GET['id']) && $_GET['id'] > 0 ){
 	    		if (!empty($_POST['author']) && !empty($_POST['comment'])){
+
 	    			addComment($_GET['id'],$_POST['author'],$_POST['comment']);
 	    		} else {
 	    			throw new Exception ('Désolé mais il faut remplir tout les champs du formulaire.');
@@ -38,8 +43,10 @@ try{
 	    elseif($_GET['action'] == 'connexion'){
 	    	if(!empty($_POST['login']) && $_POST['login'] == 'JeanF'){
 	    		if(!empty($_POST['pwd'])){
+
 	    			$_SESSION['login'] = "JeanF";
 	    			connect($_POST['login'], $_POST['pwd']);
+
 	    		} else {
 	    			throw new Exception ("Désolé, le mot de passe n'a pas été renseigné.");
 	    		}
@@ -60,6 +67,7 @@ try{
 	    }
 	    elseif($_GET['action'] == 'disconnect'){
 	    	if(isset($_SESSION['connected']) && $_SESSION['connected'] == 1){
+
 	    		disconnect();
 	    	} else {
 	    		throw new Exception ("Désolé mais vous n'êtes même pas connecté, il m'est impossible de vous déconnecter.");
@@ -67,6 +75,7 @@ try{
 	    }
 	    elseif($_GET['action'] == 'newpost'){
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
+
 	    		showAddPost();
 	    	} else {
 	    		throw new Exception ("Désolé, vous n'avez pas le droit d'accéder au contenu demandé.");
@@ -74,6 +83,7 @@ try{
 	    }
 	    elseif($_GET['action'] == 'addPost'){
 	    	if(!empty($_POST['title_tinymce']) && !empty($_POST['content_tinymce'])){
+
 	    		addPost($_POST['title_tinymce'],$_POST['content_tinymce']);
 
 	    	} else {
@@ -88,9 +98,11 @@ try{
 	    }elseif($_GET['action'] == 'showposts'){
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
 	    		if (isset($_GET['count']) && $_GET['count'] >= 0) {
+
 		    		$start = $_GET['count']*6;
 		    		showPosts($start);
 		    	}else{
+
 		    		$start = 0;
 		    		showPosts($start);
 		    	}
@@ -101,6 +113,7 @@ try{
 	    }elseif($_GET['action']=='editpost'){
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
 	    		if (isset($_GET['editId']) && $_GET['editId'] >=0){
+
 	    			editPost();
 	    		}
 
@@ -109,6 +122,7 @@ try{
 	    	}
 	    }elseif($_GET['action']=='editing'){
 	    	if(!empty($_POST['title_tinymce']) && !empty($_POST['content_tinymce']) && isset($_GET['editId'])){
+
 	    		editing($_POST['title_tinymce'],$_POST['content_tinymce']);
 
 
@@ -122,6 +136,16 @@ try{
 	    		
 	    	}
 
+	    }elseif ($_GET['action']=='deletepost') {
+	    	if((isset($_GET['deleteId']) && $_GET['deleteId']) && $_SESSION['authLvl'] == 'master'){
+
+	    		deletePost();
+
+	    	} else {
+	    		throw new Exception("Vous n'avez pas le droit de faire cette action.");
+	    		
+	    	}
+	    	
 	    }
 
 	}
@@ -129,9 +153,12 @@ try{
 
 	else {
 		if (isset($_GET['count']) && $_GET['count'] >= 0) {
+
 	    		$start = $_GET['count']*6;
 	    		listPosts($start);
-	    	}else{
+
+	    	} else {
+
 	    		$start = 0;
 	    		listPosts($start);
 	    	}

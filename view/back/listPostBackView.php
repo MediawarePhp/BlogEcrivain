@@ -42,7 +42,7 @@
 									<hr>
 									<div id="admin">
 										<a href="index.php?action=editpost&editId=<?=$data['id']?>" class="btn btn-primary btn-block">Modifier le billet</a> 
-										<a href="#" class="btn btn-danger btn-block">Supprimer le billet</a>
+										<a href="index.php?action=deletepost&deleteId=<?=$data['id']?>" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette entrée?'))" class="btn btn-danger btn-block">Supprimer le billet</a>
 									</div>
 
 
@@ -96,6 +96,7 @@
 
 		</div>
 	</div>
+
 
 <?php $content = ob_get_clean(); ?>
 
