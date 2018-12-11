@@ -37,7 +37,7 @@
 									</h2>
 									
 									<p>
-										<?= $data['contenu']; ?>
+										<?= $data['contenu']; ?> 
 									</p>
 									<hr>
 									<div id="admin">
