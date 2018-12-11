@@ -41,9 +41,11 @@ function showAddPost(){
 	require_once("view/back/newPostView.php");
 }
 
-function showPosts(){
+function showPosts($start){
 	$postManager = new PostManager();
-	$posts = $postManager -> getPosts();
+	$count = $postManager -> countAll();
+	$totalPage = getPages($count);
+	$posts = $postManager -> getPosts($start);
 	require_once("view/back/listPostBackView.php");
 
 }

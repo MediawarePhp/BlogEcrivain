@@ -58,6 +58,27 @@
 						?>
 					</div>
 				</div>
+
+				<div class="pagination pagination-lg">	
+					<?php 
+					for ($i=0; $i < $totalPage ; $i++) { 
+						?>
+						
+						<li <?php if (!isset($_GET['count']) && $i == 0 ) {
+							echo ' class="active"';
+							$_GET['count'] =0;
+						}elseif($_GET['count'] == $i){
+							echo ' class="active"';
+						}
+
+						 ?> > <a href="index.php?action=showposts&count=<?=$i?>"> <?= $i+1 ?></a></li>
+					<?php	
+					}
+					?>
+
+
+				
+				</div>
 			</div>
 
 

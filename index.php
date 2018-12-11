@@ -87,7 +87,14 @@ try{
 	    	}
 	    }elseif($_GET['action'] == 'showposts'){
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
-	    		showPosts();
+	    		if (isset($_GET['count']) && $_GET['count'] >= 0) {
+		    		$start = $_GET['count']*6;
+		    		showPosts($start);
+		    	}else{
+		    		$start = 0;
+		    		showPosts($start);
+		    	}
+	    		
 	    	} else {
 	    		throw new Exception ("Désolé, vous n'avez pas le droit d'accéder au contenu demandé.");
 	    	}
@@ -95,7 +102,13 @@ try{
 
 	}
 	else {
-	    listPosts();
+		if (isset($_GET['count']) && $_GET['count'] >= 0) {
+	    		$start = $_GET['count']*6;
+	    		listPosts($start);
+	    	}else{
+	    		$start = 0;
+	    		listPosts($start);
+	    	}
 	}
 
 }

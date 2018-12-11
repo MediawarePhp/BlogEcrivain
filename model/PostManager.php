@@ -11,11 +11,9 @@ class PostManager extends Manager
 
 		$db = $this -> dbConnect();
 
-		$query = "SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%imin%ss') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT ?, 5";
-		$request = $db->prepare($query) or trigger_error($db->error."[$query]");
-		$req = $request -> execture (array($start));
-		$posts = $req -> fetch();
-		return $posts;
+		$query = "SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%imin%ss') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT $start, 6";
+		$req = $db->query($query) or trigger_error($db->error."[$query]");
+		return $req;
 
 	}
 
@@ -41,6 +39,16 @@ class PostManager extends Manager
 		$post = $req -> fetch();
 		return $post;
 
+	}
+
+	public function countAll(){
+		$db = $this -> dbConnect();
+
+		$query = "SELECT COUNT(*) FROM billets";
+		$req = $db->prepare($query);
+		$req-> execute();
+		$count = $req ->fetchColumn();
+		return $count;
 	}
 
 	

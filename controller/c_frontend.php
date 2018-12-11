@@ -11,6 +11,8 @@ use \Alexandre\Blog\Model\LoginManager;
 function listPosts($start)
 {
 	$postManager = new PostManager();
+	$count = $postManager -> countAll();
+	$totalPage = getPages($count);
 	$posts = $postManager -> getPosts($start);
 	require_once("view/front/listPostView.php");
 }
@@ -37,5 +39,16 @@ function addComment($postId,$author,$comment)
 		header("Location: index.php?action=post&id=".$postId);
 	}
 
+}
+
+
+function getPages($count){
+	if(($count % 6) > 0 ){
+		$totalPage = $count/6;
+		return $totalPage;
+	}else{
+		$totalPage = $count/6 + 1;
+		return $totalPage;
+	}
 }
 
