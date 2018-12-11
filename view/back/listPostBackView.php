@@ -24,7 +24,7 @@
 						
 					    <div class="panel-heading">
 					      <h4 class="panel-title">
-					      	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $count ?>">Billet <?= $count ?> - <?= $data['titre'];?>           </a>
+					      	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $count ?>">Billet <?= $count ?> - <?= $data['titre'];?></a>
 					      </h4>
 					    </div>
 					    <div id="collapse<?= $count ?>" class="panel-collapse collapse">

@@ -115,7 +115,7 @@ try{
 catch (Exception $e){
 
 	$errorMessage = $e->getMessage();
-	require_once('view/errorView.php');
+	require_once('view/front/errorView.php');
 
 }
 
