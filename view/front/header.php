@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-inverse bg-light "> <!-- Barre navigation -->
+		<div class="container-fluid">
+			<a href="index.php" class="navbar-brand"><img src="bootstrap/img/logo.jpg" width="50" height="50"class=" align-top" alt=""></a>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
+					<!-- <li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-envelope"> </span> Projets <span class="caret"></span></a>
+						 <ul class="dropdown-menu"> 
+						</ul> 
+					</li> -->
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					 <form class="navbar-form navbar-right" method="post" action="index.php?action=connexion">
+					 	<div class="form-group">
+					 		
+					 		<input type="text" class="form-control" id="login" name="login" placeholder="Login">
+					 	</div>
+					 	<div class="form-group">
+					 		
+					 		<input type="password" class="form-control" id="pwd" name="pwd" placeholder="Mot de passe">
+					 	</div>
+					 	<button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-log-in"></span> Login</button>
+
+					 </form>
+					
+				</ul>
+		</div>
+	</nav>
