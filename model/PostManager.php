@@ -61,6 +61,15 @@ class PostManager extends Manager
 		return $count;
 	}
 
+	public function deletePost($postId)
+	{
+
+		$db = $this -> dbConnect();
+		$query = "DELETE FROM Billets where id = ?";
+		$req = $db->prepare($query) or trigger_error($db->error."[$query]");
+		$req -> execute(array($postId));
+	}
+
 	
 
 }

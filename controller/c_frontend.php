@@ -42,13 +42,10 @@ function addComment($postId,$author,$comment)
 }
 
 
-function getPages($count){
-	if(($count % 6) > 0 ){
-		$totalPage = $count/6;
+function getPages($count)
+{
+		$totalPage = ($count/6);
 		return $totalPage;
-	}else{
-		$totalPage = $count/6 + 1;
-		return $totalPage;
-	}
+	
 }
 

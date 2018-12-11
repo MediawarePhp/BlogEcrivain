@@ -82,7 +82,9 @@ function addPost($title,$content){
 
 function deletePost(){
 	$postManager = new PostManager();
-	
+	$postManager -> deletePost($_GET['deleteId']);
+	header("Location: index.php?action=showposts");
+
 }
 
 function test_input($data) {
