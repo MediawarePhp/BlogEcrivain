@@ -50,7 +50,7 @@
 						<img class="card-img-top" id=card_img src="bootstrap/img/ecrire.png" alt="Card image cap">
 						<div class="card-body">
 							<h5 class="card-title">Modifier les billets</h5>
-						    <p class="card-text">Pour relire tout les billets, modifier leur contenu et supprimer un billet.</p>
+						    <p class="card-text">Pour relire tout les billets, modifier leur contenu ou le supprimer.</p>
 						    <a href="index.php?action=showposts" class="btn btn-primary btn-block">Afficher la liste des billets</a>
 						</div>
 					</div>
