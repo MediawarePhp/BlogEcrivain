@@ -50,6 +50,20 @@ function showPosts($start){
 
 }
 
+function editPost(){
+	$postManager = new PostManager();
+	$post = $postManager -> getPost($_GET['editId']);
+	require_once('view/back/editPostView.php');
+}
+
+function editing($title,$content){
+	$postManager = new PostManager();
+	$postManager -> updatePost($title,$content,$_GET['editId']);
+	header("Location: index.php?action=done");
+
+
+}
+
 
 
 function addPost($title,$content){

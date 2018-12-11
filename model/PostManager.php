@@ -28,6 +28,15 @@ class PostManager extends Manager
 
 	}
 
+	public function updatePost($titre,$contenu,$postId)
+	{
+		$db = $this -> dbConnect();
+		$query = "UPDATE billets SET titre=? , contenu=? WHERE id=?";
+		$req = $db -> prepare($query) or trigger_error($db->error."[$query]");
+		$post = $req->execute(array($titre,$contenu,$postId));
+		$db = null;
+	}
+
 
 	public function getPost($postId)
 	{
@@ -41,7 +50,8 @@ class PostManager extends Manager
 
 	}
 
-	public function countAll(){
+	public function countAll()
+	{
 		$db = $this -> dbConnect();
 
 		$query = "SELECT COUNT(*) FROM billets";

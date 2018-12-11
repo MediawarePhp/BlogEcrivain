@@ -41,7 +41,7 @@
 									</p>
 									<hr>
 									<div id="admin">
-										<a href="#" class="btn btn-primary btn-block">Modifier le billet</a> 
+										<a href="index.php?action=editpost&editId=<?=$data['id']?>" class="btn btn-primary btn-block">Modifier le billet</a> 
 										<a href="#" class="btn btn-danger btn-block">Supprimer le billet</a>
 									</div>
 

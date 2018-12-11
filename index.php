@@ -98,9 +98,35 @@ try{
 	    	} else {
 	    		throw new Exception ("Désolé, vous n'avez pas le droit d'accéder au contenu demandé.");
 	    	}
+	    }elseif($_GET['action']=='editpost'){
+	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
+	    		if (isset($_GET['editId']) && $_GET['editId'] >=0){
+	    			editPost();
+	    		}
+
+	    	} else {
+	    		throw new Exception ("Désolé, vous n'avez pas le droit d'accéder au contenu demandé.");
+	    	}
+	    }elseif($_GET['action']=='editing'){
+	    	if(!empty($_POST['title_tinymce']) && !empty($_POST['content_tinymce']) && isset($_GET['editId'])){
+	    		editing($_POST['title_tinymce'],$_POST['content_tinymce']);
+
+
+	    	} else {
+	    		if(empty($_POST['title_tinymce'])){
+	    			throw new Exception("Vous n'avez pas rempli le titre.");
+	    		} else {
+	    			throw new Exception("Vous n'avez pas rempli le contenu.");
+	    		}
+	    		
+	    		
+	    	}
+
 	    }
 
 	}
+
+
 	else {
 		if (isset($_GET['count']) && $_GET['count'] >= 0) {
 	    		$start = $_GET['count']*6;
