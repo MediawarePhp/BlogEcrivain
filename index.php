@@ -6,7 +6,14 @@ require('controller/c_backend.php');
 try{
 	if (isset($_GET['action'])) {
 	    if ($_GET['action'] == 'listPosts') {
-	        listPosts();
+	    	if (isset($_GET['count']) && $_GET['count'] >= 0) {
+	    		$start = $_GET['count']*6;
+	    		listPosts($start);
+	    	}else{
+	    		$start = 0;
+	    		listPosts($start);
+	    	}
+	        
 	    }
 	    elseif ($_GET['action'] == 'post') {
 	        if (isset($_GET['id']) && $_GET['id'] > 0) {

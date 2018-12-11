@@ -6,14 +6,16 @@ require_once('Manager.php');
 
 class PostManager extends Manager
 {
-	public function getPosts()
+	public function getPosts($start)
 	{
 
 		$db = $this -> dbConnect();
 
-		$query = "SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%imin%ss') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT 0, 5";
-		$req = $db->query($query) or trigger_error($db->error."[$query]");
-		return $req;
+		$query = "SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%imin%ss') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT ?, 5";
+		$request = $db->prepare($query) or trigger_error($db->error."[$query]");
+		$req = $request -> execture (array($start));
+		$posts = $req -> fetch();
+		return $posts;
 
 	}
 

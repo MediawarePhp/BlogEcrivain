@@ -8,10 +8,10 @@ use \Alexandre\Blog\Model\PostManager;
 use \Alexandre\Blog\Model\CommentManager;
 use \Alexandre\Blog\Model\LoginManager;
 
-function listPosts()
+function listPosts($start)
 {
 	$postManager = new PostManager();
-	$posts = $postManager -> getPosts();
+	$posts = $postManager -> getPosts($start);
 	require_once("view/front/listPostView.php");
 }
 
