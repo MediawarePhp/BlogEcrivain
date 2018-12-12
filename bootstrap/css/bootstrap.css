@@ -15,19 +15,24 @@
 
 a h1, a p{
   font-size: 14px;
-  display: inline-block;
+  display: block;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-
+#header_form{
+  color: white;
+}
 
 .card{
-  width: 300px;
+  width: 400px;
+  margin-bottom: 20px;
+
 }
 
 #card_img{
-  width: 300px;
+  width: 400px;
+  height: 364px;
 }
 
 .card-text{

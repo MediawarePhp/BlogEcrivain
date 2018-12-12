@@ -8,7 +8,7 @@
 				<p> <h2>Article</h2> blablablablablablablabla</p>
 			</div>
 
-			<div class="col-sm-8 text-left"> <!-- Milieu  -->
+			<div class="col-sm-9 text-left"> <!-- Milieu  -->
 				<h1> Administration des billets </h1>
 				<p> 
 					Cette page vous permet de lire, modifier et supprimer les différents billets déjà postés.
@@ -24,7 +24,7 @@
 						
 					    <div class="panel-heading">
 					      <h4 class="panel-title">
-					      	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $count ?>">Billet <?= $data['id'] ?> - <?= $data['titre'];?></a>
+					      	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $count ?>">Billet <?= $data['id'] ?>   <?= $data['titre'];?></a>
 					      </h4>
 					    </div>
 					    <div id="collapse<?= $count ?>" class="panel-collapse collapse">
@@ -82,17 +82,7 @@
 			</div>
 
 
-			<div class="col-sm-2 sidenav"> <!-- Colonne droite -->
-
-				<div class="well">
-					<p>PUB</p>
-				</div>
-
-				<div class="well">
-					<p>PUB </p>
-				</div>
 				
-			</div>
 
 		</div>
 	</div>
