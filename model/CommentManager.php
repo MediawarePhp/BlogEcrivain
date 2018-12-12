@@ -65,4 +65,22 @@ class CommentManager extends Manager
 		return $count;
 	}
 
+
+	public function deleteComment($commentId)
+	{
+		$db = $this -> dbConnect();
+		$query = "DELETE FROM commentaires WHERE id = ?";
+		$req = $db->prepare($query) or trigger_error($db->error."[$query]");
+		$req -> execute(array($commentId));
+	}
+
+	public function validateComment($commentId)
+	{
+		$db = $this -> dbConnect();
+		$query = "UPDATE commentaires SET validation = 1 WHERE id = ?";
+		$req = $db ->prepare($query) or trigger_error($db->error."[$query]");
+		$req -> execute(array($commentId));
+
+	}
+
 }

@@ -97,6 +97,19 @@ function manageCommentary($start){
 
 }
 
+function deleteComment($commentId){
+	$commentManager = new CommentManager();
+	$commentManager -> deleteComment($commentId);
+	header("Location: index.php?action=manage");
+}
+
+function validateComm($commentId){
+	$commentManager = new CommentManager();
+	$commentManager -> validateComment($commentId);
+	header("Location: index.php?action=manage");
+}
+
+
 function test_input($data) {
 		  $data = trim($data);
 		  $data = stripslashes($data);

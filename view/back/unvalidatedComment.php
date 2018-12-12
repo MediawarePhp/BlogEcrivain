@@ -9,9 +9,9 @@
 			</div>
 
 			<div class="col-sm-9 text-left"> <!-- Milieu  -->
-				<h1> Administration des billets </h1>
+				<h1> Validation des commentaires </h1>
 				<p> 
-					Cette page vous permet de lire, modifier et supprimer les différents billets déjà postés.
+					Cette page vous permet de lire, valider ou supprimer les différents commentaires écrit par les visiteurs du site.
 				</p>
 				<hr>
 
@@ -41,8 +41,8 @@
 									</p>
 									<hr>
 									<div id="admin">
-										<a href="index.php?action=manage" class="btn btn-success btn-block">Valider le commentaire</a> 
-										<a href="index.php?action=manage" onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce commentaire ? '))" class="btn btn-danger btn-block">Supprimer le commentaire</a>
+										<a href="index.php?action=validateComm&commentaryId=<?=$comment['id']?>" class="btn btn-success btn-block">Valider le commentaire</a> 
+										<a href="index.php?action=deleteComm&commentaryId=<?=$comment['id']?>" onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce commentaire ? '))" class="btn btn-danger btn-block">Supprimer le commentaire</a>
 									</div>
 
 

@@ -193,8 +193,36 @@ try{
 	    	
 	    }
 
-	}
+	    elseif ($_GET['action'] == "deleteComm") {
+	    	if (isset($_GET['commentaryId']) && $_GET['commentaryId'] > 0 ) {
+	    		if (isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == 'master') {
+	    			deleteComment($_GET['commentaryId']);
+	    		} else {
+	    			throw new Exception("Vous n'avez pas le droit d'accéder au contenu.");
+	    			
+	    		}
+	    	} else {
+	    		throw new Exception("Erreur lors de la suppression.");
+	    		
+	    	}
+	    	
 
+	    } 
+
+	    elseif ($_GET['action'] == 'validateComm') {
+	    	if (isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master") {
+	    		if (isset($_GET['commentaryId']) && $_GET['commentaryId']) {
+	    			validateComm($_GET['commentaryId']);
+	    		}
+	    		
+	    	} else {
+	    		throw new Exception("Vous n'avez pas le droit d'accéder au contenu.");
+	    		
+	    	}
+
+		}
+
+	}
 
 	else {
 		if (isset($_GET['count']) && $_GET['count'] >= 0) {
