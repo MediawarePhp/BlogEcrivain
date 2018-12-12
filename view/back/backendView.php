@@ -38,13 +38,13 @@
 					</div>
 					<br>
 					<div class="card">
-						<a href="#">
+						<a href="index.php?action=manage">
 							<img class="card-img-top" id=card_img src="bootstrap/img/validate.png" alt="Card image cap">
 						</a>
 						<div class="card-body">
 							<h4 class="card-title">Validation des commentaires</h4>
 						    <p class="card-text">Liste des commentaires à valider. Vous pouvez accepter ou refuser chaque commentaire</p>
-						    <a href="#" class="btn btn-primary btn-block">Afficher la liste des commentaires à valider</a>
+						    <a href="index.php?action=manage" class="btn btn-primary btn-block">Afficher la liste des commentaires à valider</a>
 						</div>
 					</div>
 				</div>

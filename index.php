@@ -18,17 +18,18 @@ try{
 	    	}
 	        
 	    }
+
 	    elseif ($_GET['action'] == 'post') {
 	        if (isset($_GET['id']) && $_GET['id'] > 0) {
-	        	if (isset($_GET['count']) && $_GET['count'] >= 0) {
+	        	if (isset($_GET['commentary_count']) && $_GET['commentary_count'] >= 0) {
 
-		    		$start = $_GET['count']*6;
-		    		Post($start);
+		    		$start = $_GET['commentary_count']*6;
+		    		post($start);
 
 		    	} else {
 
 		    		$start = 0;
-		    		Post($start);
+		    		post($start);
 		    	}
 	            
 	        }
@@ -36,6 +37,7 @@ try{
 	            throw new Exception ('Erreur : aucun identifiant de billet envoyé.');
 	        }
 	    }
+
 	    elseif ($_GET['action'] == 'addComment') {
 	    	if(isset($_GET['id']) && $_GET['id'] > 0 ){
 	    		if (!empty($_POST['author']) && !empty($_POST['comment'])){
@@ -49,6 +51,7 @@ try{
 	    	}
 
 	    }
+
 	    elseif($_GET['action'] == 'connexion'){
 	    	if(!empty($_POST['login']) && $_POST['login'] == 'JeanF'){
 	    		if(!empty($_POST['pwd'])){
@@ -65,6 +68,7 @@ try{
 	    	}
 
 	    }
+
 	    elseif($_GET['action'] == "done" ){
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
 	    		displayBackend();
@@ -74,6 +78,7 @@ try{
 
 
 	    }
+
 	    elseif($_GET['action'] == 'disconnect'){
 	    	if(isset($_SESSION['connected']) && $_SESSION['connected'] == 1){
 
@@ -82,6 +87,7 @@ try{
 	    		throw new Exception ("Désolé mais vous n'êtes même pas connecté, il m'est impossible de vous déconnecter.");
 	    	}
 	    }
+
 	    elseif($_GET['action'] == 'newpost'){
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
 
@@ -89,7 +95,8 @@ try{
 	    	} else {
 	    		throw new Exception ("Désolé, vous n'avez pas le droit d'accéder au contenu demandé.");
 	    	}
-	    }
+	    } 
+	    
 	    elseif($_GET['action'] == 'addPost'){
 	    	if(!empty($_POST['title_tinymce']) && !empty($_POST['content_tinymce'])){
 
@@ -104,7 +111,9 @@ try{
 	    		
 	    		
 	    	}
-	    }elseif($_GET['action'] == 'showposts'){
+	    } 
+
+	    elseif($_GET['action'] == 'showposts'){
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
 	    		if (isset($_GET['count']) && $_GET['count'] >= 0) {
 
@@ -119,7 +128,9 @@ try{
 	    	} else {
 	    		throw new Exception ("Désolé, vous n'avez pas le droit d'accéder au contenu demandé.");
 	    	}
-	    }elseif($_GET['action']=='editpost'){
+	    }
+
+	    elseif($_GET['action']=='editpost'){
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
 	    		if (isset($_GET['editId']) && $_GET['editId'] >=0){
 
@@ -129,7 +140,9 @@ try{
 	    	} else {
 	    		throw new Exception ("Désolé, vous n'avez pas le droit d'accéder au contenu demandé.");
 	    	}
-	    }elseif($_GET['action']=='editing'){
+	    }
+
+	    elseif($_GET['action']=='editing'){
 	    	if(!empty($_POST['title_tinymce']) && !empty($_POST['content_tinymce']) && isset($_GET['editId'])){
 
 	    		editing($_POST['title_tinymce'],$_POST['content_tinymce']);
@@ -144,8 +157,9 @@ try{
 	    		
 	    		
 	    	}
+	    } 
 
-	    }elseif ($_GET['action']=='deletepost') {
+	    elseif ($_GET['action']=='deletepost') {
 	    	if((isset($_GET['deleteId']) && $_GET['deleteId']) && $_SESSION['authLvl'] == 'master'){
 
 	    		deletePost();
@@ -153,7 +167,19 @@ try{
 	    	} else {
 	    		throw new Exception("Vous n'avez pas le droit de faire cette action.");
 	    		
+	    	}	
+	    } 
+
+	    elseif ($_GET['action'] == 'manage' ) {
+	    	if (isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == 'master') {
+	    		manageCommentary();
+
+	    		
+	    	} else {
+	    		throw new Exception("Désolé, vous n'avez pas les droits pour accéder à ce contenu.");
+	    		
 	    	}
+
 	    	
 	    }
 

@@ -79,12 +79,12 @@
 						
 						<li <?php if (!isset($_GET['commentary_count']) && $i == 0 ) {
 							echo ' class="active"';
-							$_GET['commentary_count'] =0;
+							$_GET['commentary_count'] = 0;
 						}elseif($_GET['commentary_count'] == $i){
 							echo ' class="active"';
 						}
 
-						 ?> > <a href="index.php?action=post&id=<?= $post['id']?>&count=<?=$i?>"> <?= $i+1 ?></a></li>
+						 ?> > <a href="index.php?action=post&id=<?= $post['id']?>&commentary_count=<?=$i?>"> <?= $i+1 ?></a></li>
 					<?php	
 					}
 					?>
