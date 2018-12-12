@@ -27,7 +27,7 @@
 					      	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $count ?>"> Commentaire <?= $comment['id'] ?>   <?= $comment['auteur'];?></a>
 					      </h4>
 					    </div>
-					    <div id="collapse<?= $count ?>" class="panel-collapse collapse">
+					    <div id="collapse<?= $count ?>" class="panel-collapse collapse in">
 					    	<div class="panel-body">
 								<div class="comment">	
 
