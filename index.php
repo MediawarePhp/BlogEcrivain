@@ -20,8 +20,17 @@ try{
 	    }
 	    elseif ($_GET['action'] == 'post') {
 	        if (isset($_GET['id']) && $_GET['id'] > 0) {
+	        	if (isset($_GET['count']) && $_GET['count'] >= 0) {
 
-	            post();
+		    		$start = $_GET['count']*6;
+		    		Post($start);
+
+		    	} else {
+
+		    		$start = 0;
+		    		Post($start);
+		    	}
+	            
 	        }
 	        else {
 	            throw new Exception ('Erreur : aucun identifiant de billet envoyé.');

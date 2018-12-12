@@ -26,7 +26,7 @@
 
 				</div>
 
-				<?php while($comment = $comments->fetch()){ ?>
+				<?php if($totalPage != 0){ while($comment = $comments->fetch()){ ?>
 
 				<div class="comment">	
 
@@ -48,8 +48,50 @@
 
 				<?php 
 				}
+				
 				$comments-> closeCursor();	
+				} else { ?>
+					<div class="comment">	
+
+					
+
+					<h2> 
+						Désolé mais il n'y a aucun commentaire.				
+					</h2>
+					
+					<p>
+						C'est pourquoi je te propose d'en écrire un ! Il faudra attendre que Jean valide ton commentaire pour qu'il s'affiche.
+					</p>
+					<hr>
+
+				</div>
+				
+				<?php
+				}
 				?>
+
+
+
+				<div class="pagination pagination-lg">	
+					<?php 
+					for ($i=0; $i < $totalPage ; $i++) { 
+						?>
+						
+						<li <?php if (!isset($_GET['commentary_count']) && $i == 0 ) {
+							echo ' class="active"';
+							$_GET['commentary_count'] =0;
+						}elseif($_GET['commentary_count'] == $i){
+							echo ' class="active"';
+						}
+
+						 ?> > <a href="index.php?action=post&id=<?= $post['id']?>&count=<?=$i?>"> <?= $i+1 ?></a></li>
+					<?php	
+					}
+					?>
+
+
+				
+				</div>
 
 				<div class="comment">
 				<h2>Donnez-nous votre avis</h2>
@@ -70,8 +112,11 @@
 				</div>
 
 
+
+
 				
 			</div>
+			
 
 
 			<div class="col-sm-2 sidenav"> <!-- Colonne droite -->

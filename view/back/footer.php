@@ -1,4 +1,4 @@
-<footer class="footer "> <!-- pied de page -->
+<footer class="footer fixed-bottom"> <!-- pied de page -->
 		<i class="fa fa-facebook-square" style="color:#3B5998;"></i>
 		<i class="fa fa-linkedin" style="color:white;"></i>
 

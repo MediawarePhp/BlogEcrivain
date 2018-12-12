@@ -17,12 +17,14 @@ function listPosts($start)
 	require_once("view/front/listPostView.php");
 }
 
-function post()
+function post($start)
 {
 	$postManager = new PostManager();
 	$commentManager = new CommentManager();
+	$count = $commentManager -> countPostCommentary($_GET['id']);
+	$totalPage = getPages($count);
 	$post = $postManager -> getPost($_GET['id']);
-	$comments = $commentManager -> getComments($_GET ['id']);
+	$comments = $commentManager -> getComments($_GET ['id'],$start);
 	
 	require_once('view/front/postView.php');
 }

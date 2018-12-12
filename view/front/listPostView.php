@@ -20,13 +20,15 @@
 
 				<div class="news">	
 
-					<h2> 
-						<?= $data['titre'];?>
-						le <strong><?= $data['date_creation_fr'];?></strong>					
+					 <h2>
+						<?= $data['titre'];?>	
 					</h2>
 					
 					<p>
 						<?= $data['contenu']; ?>
+					</p>
+					<p>
+						le <strong> <?= $data['date_creation_fr'];?> </strong>
 					</p>
 					<em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
 					<hr>
