@@ -6,10 +6,27 @@
 						echo 'class="active"';
 					} 
 					 ?> > <a href="index.php"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
-					<li <?php if(isset($_GET['action']) && $_GET['action'] == "done"){
-						echo 'class="active"';
-					} 
-					 ?> ><a href="index.php?action=done"><span class="glyphicon glyphicon-book"></span> Panneau d'administration</a> </li>
+					
+
+					 <?php if (isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == 'master'): ?>
+
+
+
+					 	
+					 	<li <?php if(isset($_GET['action']) && $_GET['action'] == "done"){
+							echo 'class="active"';
+						} 
+						 ?> ><a href="index.php?action=done"><span class="glyphicon glyphicon-book"></span> Panneau d'administration</a> </li>
+
+
+
+
+					  <?php endif; ?>
+					
+
+
+
+
 					<!-- <li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-envelope"> </span> Projets <span class="caret"></span></a>
 						 <ul class="dropdown-menu"> 

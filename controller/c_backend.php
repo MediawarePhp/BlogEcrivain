@@ -33,7 +33,7 @@ function connect($login,$password)
 }
 
 function disconnect(){
-	$_SESSION['connected'] = 0;
+	session_destroy();
 	header("Location: index.php");	
 }
 
