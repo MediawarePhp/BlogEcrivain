@@ -21,9 +21,9 @@ class CommentManager extends Manager
 	}
 
 
-	function getUnvalidatedComment(){
+	function getUnvalidatedComment($start){
 		$db = $this -> dbConnect();
-		$query = "SELECT id, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin%ss') AS date_commentaire_fr FROM commentaires WHERE validation IS NULL ORDER BY date_commentaire DESC";
+		$query = "SELECT id, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin%ss') AS date_commentaire_fr FROM commentaires WHERE validation IS NULL ORDER BY date_commentaire DESC LIMIT $start, 6";
 		$comments = $db -> prepare($query) or trigger_error($db->error."[$query]");
 		$comments -> execute();
 		return $comments;
@@ -50,6 +50,17 @@ class CommentManager extends Manager
 		$query = "SELECT COUNT(*) FROM commentaires WHERE id_billet = ? AND validation = 1";
 		$req = $db->prepare($query);
 		$req-> execute(array($postId));
+		$count = $req ->fetchColumn();
+		return $count;
+	}
+
+	public function countUnvalidatedComment()
+	{
+		$db = $this -> dbConnect();
+
+		$query = "SELECT COUNT(*) FROM commentaires WHERE  validation IS NULL";
+		$req = $db->prepare($query);
+		$req-> execute();
 		$count = $req ->fetchColumn();
 		return $count;
 	}

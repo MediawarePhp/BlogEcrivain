@@ -88,9 +88,12 @@ function deletePost(){
 }
 
 
-function manageCommentary(){
+function manageCommentary($start){
 	$commentManager = new CommentManager();
-	
+	$count = $commentManager -> countUnvalidatedComment();
+	$totalPage = getPages($count);
+	$comments = $commentManager -> getUnvalidatedComment($start);
+	require_once("view/back/unvalidatedComment.php");
 
 }
 

@@ -172,7 +172,17 @@ try{
 
 	    elseif ($_GET['action'] == 'manage' ) {
 	    	if (isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == 'master') {
-	    		manageCommentary();
+	    		if (isset($_GET['commentary_count']) && $_GET['commentary_count'] >= 0) {
+
+		    		$start = $_GET['commentary_count']*6;
+		    		manageCommentary($start);
+
+		    	} else {
+
+		    		$start = 0;
+		    		manageCommentary($start);
+		    	}
+	    		
 
 	    		
 	    	} else {

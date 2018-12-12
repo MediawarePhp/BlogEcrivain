@@ -19,30 +19,30 @@
 					<div class="panel panel-default">
 						<?php 
 						$count = "1";
-						while($data = $posts->fetch()){ ?>
+						while($comment = $comments->fetch()){ ?>
 
 						
 					    <div class="panel-heading">
 					      <h4 class="panel-title">
-					      	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $count ?>" > Billet <?= $data['id'] ?>   <?= $data['titre'];?></a>
+					      	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $count ?>"> Commentaire <?= $comment['id'] ?>   <?= $comment['auteur'];?></a>
 					      </h4>
 					    </div>
 					    <div id="collapse<?= $count ?>" class="panel-collapse collapse">
 					    	<div class="panel-body">
-								<div class="news">	
+								<div class="comment">	
 
-									<h2> 
-										<?= $data['titre'];?>
-										le <strong><?= $data['date_creation_fr'];?></strong>					
-									</h2>
+									<h3> 
+										
+										le <strong><?= $comment['date_commentaire_fr'];?></strong>					
+									</h3>
 									
 									<p>
-										<?= $data['contenu']; ?> 
+										<?= $comment['commentaire']; ?> 
 									</p>
 									<hr>
 									<div id="admin">
-										<a href="index.php?action=editpost&editId=<?=$data['id']?>" class="btn btn-primary btn-block">Modifier le billet</a> 
-										<a href="index.php?action=deletepost&deleteId=<?=$data['id']?>" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette entrée?'))" class="btn btn-danger btn-block">Supprimer le billet</a>
+										<a href="index.php?action=manage" class="btn btn-success btn-block">Valider le commentaire</a> 
+										<a href="index.php?action=manage" onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce commentaire ? '))" class="btn btn-danger btn-block">Supprimer le commentaire</a>
 									</div>
 
 
@@ -54,7 +54,7 @@
 						<?php
 						$count +=1;
 						} 
-						$posts-> closeCursor();
+						$comments-> closeCursor();
 						?>
 					</div>
 				</div>
@@ -64,14 +64,14 @@
 					for ($i=0; $i < $totalPage ; $i++) { 
 						?>
 						
-						<li <?php if (!isset($_GET['count']) && $i == 0 ) {
+						<li <?php if (!isset($_GET['commentary_count']) && $i == 0 ) {
 							echo ' class="active"';
-							$_GET['count'] =0;
-						}elseif($_GET['count'] == $i){
+							$_GET['commentary_count'] = 0;
+						}elseif($_GET['commentary_count'] == $i){
 							echo ' class="active"';
 						}
 
-						 ?> > <a href="index.php?action=showposts&count=<?=$i?>"> <?= $i+1 ?></a></li>
+						 ?> > <a href="index.php?action=manage&commentary_count=<?=$i?>"> <?= $i+1 ?></a></li>
 					<?php	
 					}
 					?>
