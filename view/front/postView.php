@@ -96,14 +96,14 @@
 				<div class="comment">
 				<h2>Donnez-nous votre avis</h2>
 
-					<form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+					<form class="form-group" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
 					    <div>
 					        <label for="author">Auteur</label><br />
-					        <input type="text" id="author" name="author" />
+					        <input type="text"  class="form-control" id="author" name="author" />
 					    </div>
 					    <div>
 					        <label for="comment">Commentaire</label><br />
-					        <textarea id="comment" name="comment"></textarea>
+					        <textarea id="comment" class="form-control" name="comment"></textarea>
 					    </div>
 					    <div>
 					        <input type="submit" />
