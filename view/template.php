@@ -8,6 +8,8 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- favicône de base -->
+	<link rel="shortcut icon" href="./bootstrap/img/favicon.ico"/>
 	<title>Blog de Jean Forteroche</title>
 
 </head>
