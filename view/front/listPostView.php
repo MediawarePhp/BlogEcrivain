@@ -20,29 +20,28 @@
 					
 				<?php while($data = $posts->fetch()){ ?>
 
-				<div class="news">	
-
+				<div class="news well" >	
+ 
 					 <h2>
 						<?= $data['titre'];  ?> 
 					</h2>
 					<p>
-
 						<?= $data['contenu']; ?>
 					</p>
 					<p>
-						le <strong> <?= $data['date_creation_fr'];?> </strong>
+						<em>le <strong> <?= $data['date_creation_fr'];?> </strong></em>
 					</p>
 					<?php if ($data['countCommentaire']>1) : ?>
-					<em><a href="index.php?action=post&id=<?= $data['id'] ?>"> Afficher les <?= $data['countCommentaire']; ?> commentaires </a></em>
+						<em><a href="index.php?action=post&id=<?= $data['id'] ?>"><button type="button" class="btn btn-primary"> Afficher les <?= $data['countCommentaire']; ?> commentaires </button></a></em>
 					<?php elseif ($data['countCommentaire']==1) : ?>
-						<em><a href="index.php?action=post&id=<?= $data['id'] ?>"> Afficher l'unique commentaire </a></em>
-					<hr>
+						<em><a href="index.php?action=post&id=<?= $data['id'] ?>"><button type="button" class="btn btn-primary">   Afficher l'unique commentaire</button></a></em>
+					
 					<?php else : ?>
-						<em><a href="index.php?action=post&id=<?= $data['id'] ?>"> Aucun commentaire, postez-en un !</a></em>
+						<em> <a href="index.php?action=post&id=<?= $data['id'] ?>"><button type="button" class="btn btn-primary"> Aucun commentaire, postez-en un !</button></a></em>
 					<?php endif;?>
 
 				</div>
-
+				<hr>
 				<?php
 				} 
 				$posts-> closeCursor();
