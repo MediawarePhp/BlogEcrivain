@@ -14,6 +14,7 @@ function listPosts($start)
 	$count = $postManager -> countAll();
 	$totalPage = getPages($count);
 	$posts = $postManager -> getPosts($start);
+	
 	require_once("view/front/listPostView.php");
 }
 

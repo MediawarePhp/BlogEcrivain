@@ -11,7 +11,7 @@ class PostManager extends Manager
 
 		$db = $this -> dbConnect();
 
-		$query = "SELECT id, titre, contenu, DATE_FORMAT(date_creation, '%d/%m/%Y à %Hh%i') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT $start, 6";
+		$query = "SELECT billets.id, billets.titre, billets.contenu, DATE_FORMAT(billets.date_creation, '%d/%m/%Y à %Hh%i') AS date_creation_fr, COUNT(commentaires.id) AS countCommentaire FROM billets  LEFT JOIN commentaires  ON billets.id = commentaires.id_billet AND validation = 1 GROUP BY billets.id ORDER BY date_creation DESC LIMIT $start, 6";
 		$req = $db->query($query) or trigger_error($db->error."[$query]");
 		return $req;
 

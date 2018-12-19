@@ -11,20 +11,22 @@
 			<div class="col-sm-8 text-left"> <!-- Milieu  -->
 				<h1> Bienvenue </h1>
 				<p> 
+
 					Vous êtes bien sur le blog de Jean Forteroche, célèbre écrivain français. Vous pourrez trouver ici tous les chapitres qui constituent son dernier livre "A l'approche de l'hiver"
 					Jean publie régulièrement des nouveaux chapitres à son oeuvre, voici le site qui lui permets de les publier.
 				</p>
 				<hr>
 
+					
 				<?php while($data = $posts->fetch()){ ?>
 
 				<div class="news">	
 
 					 <h2>
-						<?= $data['titre'];?>	
+						<?= $data['titre'];  ?> 
 					</h2>
-					
 					<p>
+						<?= $data['countCommentaire']; ?>
 						<?= $data['contenu']; ?>
 					</p>
 					<p>
