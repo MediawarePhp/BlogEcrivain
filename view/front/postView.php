@@ -106,7 +106,7 @@
 					        <textarea id="comment" class="form-control" name="comment"></textarea>
 					    </div>
 					    <div>
-					        <input type="submit" />
+					        <button type="submit" class="btn btn-success"> Valider votre commentaire </button>
 					    </div>
 					</form>
 				</div>
