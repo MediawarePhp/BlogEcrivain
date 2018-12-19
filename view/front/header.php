@@ -29,7 +29,7 @@
 					</li> -->
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<?php if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] != 'master') : ?>
+					<?php if(!isset($_SESSION['authLvl']) ) : ?>
 					 <form class="navbar-form navbar-right" method="post" action="index.php?action=connexion">
 					 	<div class="form-group">
 					 		
