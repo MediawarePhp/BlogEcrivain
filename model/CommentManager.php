@@ -23,7 +23,7 @@ class CommentManager extends Manager
 
 	public function getUnvalidatedComment($start){
 		$db = $this -> dbConnect();
-		$query = "SELECT id, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%i') AS date_commentaire_fr FROM commentaires WHERE validation IS NULL ORDER BY date_commentaire DESC LIMIT $start, 6";
+		$query = "SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%i') AS date_commentaire_fr FROM commentaires WHERE validation IS NULL ORDER BY date_commentaire DESC LIMIT $start, 6";
 		$comments = $db -> prepare($query) or trigger_error($db->error."[$query]");
 		$comments -> execute();
 		return $comments;
@@ -34,7 +34,7 @@ class CommentManager extends Manager
 	public function getValidatedComment($start){
 
 		$db = $this -> dbConnect();
-		$query ="SELECT id, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%i') AS date_commentaire_fr FROM commentaires WHERE validation = 1 ORDER BY date_commentaire DESC LIMIT $start, 6";
+		$query ="SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%i') AS date_commentaire_fr FROM commentaires WHERE validation = 1 ORDER BY date_commentaire DESC LIMIT $start, 6";
 		$comments = $db -> prepare($query) or trigger_error($db->error."[$query]");
 		$comments -> execute();
 		return $comments;

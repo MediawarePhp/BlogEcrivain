@@ -30,10 +30,9 @@
 					    <div id="collapse<?= $count ?>" class="panel-collapse collapse in">
 					    	<div class="panel-body">
 								<div class="comment">	
-
+									 <a href="index.php?action=post&id=<?= $comment['id_billet'] ?>">Accéder au billet commenté</a>
 									<h3> 
-										
-										le <strong><?= $comment['date_commentaire_fr'];?></strong>					
+										 le <strong><?= $comment['date_commentaire_fr'];?></strong>					
 									</h3>
 									
 									<p>
