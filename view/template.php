@@ -13,12 +13,8 @@
 </head>
 
 <body>
-	<?php
-	if(isset($_SESSION['connected'])&& $_SESSION['connected'] == 1){
-		require_once('back/header.php');
-	}else{
+	<?php	
 		require_once('front/header.php');
-	}
 	?>
 
 	<?= $content ?>

@@ -2,7 +2,26 @@
 		<div class="container-fluid">
 			<a href="index.php" class="navbar-brand"><img src="bootstrap/img/logo.jpg" width="50" height="50"class=" align-top" alt=""></a>
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
+					<li <?php if(!isset($_GET['action'])){
+						echo 'class="active"';
+					} 
+					 ?> > <a href="index.php"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
+					
+
+					 <?php if (isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == 'master'): ?>
+
+
+
+					 	
+					 	<li <?php if(isset($_GET['action']) && $_GET['action'] == "done"){
+							echo 'class="active"';
+						} 
+						 ?> ><a href="index.php?action=done"><span class="glyphicon glyphicon-book"></span> Panneau d'administration</a> </li>
+
+
+
+
+					  <?php endif; ?>
 					<!-- <li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-envelope"> </span> Projets <span class="caret"></span></a>
 						 <ul class="dropdown-menu"> 
@@ -10,6 +29,7 @@
 					</li> -->
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					<?php if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] != 'master') : ?>
 					 <form class="navbar-form navbar-right" method="post" action="index.php?action=connexion">
 					 	<div class="form-group">
 					 		
@@ -22,6 +42,13 @@
 					 	<button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-log-in"></span> Login</button>
 
 					 </form>
+					 <?php else : ?>
+					 	 <form id="header_form" class="navbar-form navbar-right" method="post" action="index.php?action=disconnect">
+					 	 Bienvenue <?= nl2br(htmlspecialchars($_SESSION['login'])); ?>
+					 	<button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-log-out"></span> Se déconnecter</button>
+
+					 </form>
+					<?php endif; ?>
 					
 				</ul>
 		</div>
