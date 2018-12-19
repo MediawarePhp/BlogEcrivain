@@ -26,14 +26,20 @@
 						<?= $data['titre'];  ?> 
 					</h2>
 					<p>
-						<?= $data['countCommentaire']; ?>
+
 						<?= $data['contenu']; ?>
 					</p>
 					<p>
 						le <strong> <?= $data['date_creation_fr'];?> </strong>
 					</p>
-					<em><a href="index.php?action=post&id=<?= $data['id'] ?>"> Afficher les commentaires </a></em>
+					<?php if ($data['countCommentaire']>1) : ?>
+					<em><a href="index.php?action=post&id=<?= $data['id'] ?>"> Afficher les <?= $data['countCommentaire']; ?> commentaires </a></em>
+					<?php elseif ($data['countCommentaire']==1) : ?>
+						<em><a href="index.php?action=post&id=<?= $data['id'] ?>"> Afficher l'unique commentaire </a></em>
 					<hr>
+					<?php else : ?>
+						<em><a href="index.php?action=post&id=<?= $data['id'] ?>"> Aucun commentaire, postez-en un !</a></em>
+					<?php endif;?>
 
 				</div>
 
