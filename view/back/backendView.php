@@ -62,13 +62,13 @@
 					</div>
 					<br>
 					<div class="card">
-						<a href="#">
+						<a href="index.php?action=showComms">
 							<img class="card-img-top" id=card_img src="bootstrap/img/comment.png" alt="Card image cap">
 						</a>
 						<div class="card-body">
 							<h4 class="card-title">Modération des commentaires</h4>
 						    <p class="card-text">Liste de tout les commentaires validés. Vous pouvez les afficher et les supprimer </p>
-						    <a href="#" class="btn btn-primary btn-block">Afficher la liste des commentaires valides</a>
+						    <a href="index.php?action=showComms" class="btn btn-primary btn-block">Afficher la liste des commentaires valides</a>
 						</div>
 					</div>
 

@@ -44,7 +44,7 @@
 					 </form>
 					 <?php else : ?>
 					 	 <form id="header_form" class="navbar-form navbar-right" method="post" action="index.php?action=disconnect">
-					 	 Bienvenue <?= nl2br(htmlspecialchars($_SESSION['login'])); ?>
+					 	 Bienvenue <?= nl2br(htmlspecialchars($_SESSION['login'])) ; ?> 
 					 	<button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-log-out"></span> Se déconnecter</button>
 
 					 </form>

@@ -7,7 +7,7 @@ class CommentManager extends Manager
 {
 	
 
-	function getComments($postId,$start)
+	public function getComments($postId,$start)
 	{
 
 		
@@ -21,7 +21,7 @@ class CommentManager extends Manager
 	}
 
 
-	function getUnvalidatedComment($start){
+	public function getUnvalidatedComment($start){
 		$db = $this -> dbConnect();
 		$query = "SELECT id, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%i') AS date_commentaire_fr FROM commentaires WHERE validation IS NULL ORDER BY date_commentaire DESC LIMIT $start, 6";
 		$comments = $db -> prepare($query) or trigger_error($db->error."[$query]");
@@ -30,7 +30,18 @@ class CommentManager extends Manager
 
 	}
 
-	function postComment($postId,$author,$comment)
+
+	public function getValidatedComment($start){
+
+		$db = $this -> dbConnect();
+		$query ="SELECT id, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%i') AS date_commentaire_fr FROM commentaires WHERE validation = 1 ORDER BY date_commentaire DESC LIMIT $start, 6";
+		$comments = $db -> prepare($query) or trigger_error($db->error."[$query]");
+		$comments -> execute();
+		return $comments;
+		
+	}
+
+	public function postComment($postId,$author,$comment)
 	{
 
 		$db = $this -> dbConnect();
@@ -65,6 +76,17 @@ class CommentManager extends Manager
 		return $count;
 	}
 
+	public function countValidatedComment()
+	{
+		$db = $this -> dbConnect();
+
+		$query = "SELECT COUNT(*) FROM commentaires WHERE  validation = 1";
+		$req = $db->prepare($query);
+		$req-> execute();
+		$count = $req ->fetchColumn();
+		return $count;
+	}
+
 
 	public function deleteComment($commentId)
 	{
@@ -82,5 +104,9 @@ class CommentManager extends Manager
 		$req -> execute(array($commentId));
 
 	}
+
+
+
+
 
 }

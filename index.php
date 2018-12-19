@@ -5,7 +5,7 @@ require('controller/c_backend.php');
 
 try{
 	if (isset($_GET['action'])) {
-	    if ($_GET['action'] == 'listPosts') {
+	    if ($_GET['action'] == 'listPosts') { // List post
 	    	if (isset($_GET['count']) && $_GET['count'] >= 0) {
 
 	    		$start = $_GET['count']*6;
@@ -19,7 +19,7 @@ try{
 	        
 	    }
 
-	    elseif ($_GET['action'] == 'post') {
+	    elseif ($_GET['action'] == 'post') { // Show 1 post
 	        if (isset($_GET['id']) && $_GET['id'] > 0) {
 	        	if (isset($_GET['commentary_count']) && $_GET['commentary_count'] >= 0) {
 
@@ -38,7 +38,7 @@ try{
 	        }
 	    }
 
-	    elseif ($_GET['action'] == 'addComment') {
+	    elseif ($_GET['action'] == 'addComment') { //When user add a comment
 	    	if(isset($_GET['id']) && $_GET['id'] > 0 ){
 	    		if (!empty($_POST['author']) && !empty($_POST['comment'])){
 
@@ -52,7 +52,7 @@ try{
 
 	    }
 
-	    elseif($_GET['action'] == 'connexion'){
+	    elseif($_GET['action'] == 'connexion'){ // Connect the user
 	    	if(!empty($_POST['login']) && $_POST['login'] == 'JeanF'){
 	    		if(!empty($_POST['pwd'])){
 
@@ -69,7 +69,7 @@ try{
 
 	    }
 
-	    elseif($_GET['action'] == "done" ){
+	    elseif($_GET['action'] == "done" ){ // Display back end interface
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
 	    		displayBackend();
 	    	} else {
@@ -79,7 +79,7 @@ try{
 
 	    }
 
-	    elseif($_GET['action'] == 'disconnect'){
+	    elseif($_GET['action'] == 'disconnect'){ // Disconnect session
 	    	if(isset($_SESSION['connected']) && $_SESSION['connected'] == 1){
 
 	    		disconnect();
@@ -88,7 +88,7 @@ try{
 	    	}
 	    }
 
-	    elseif($_GET['action'] == 'newpost'){
+	    elseif($_GET['action'] == 'newpost'){ // Open a tab to write a post
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
 
 	    		showAddPost();
@@ -97,7 +97,7 @@ try{
 	    	}
 	    } 
 	    
-	    elseif($_GET['action'] == 'addPost'){
+	    elseif($_GET['action'] == 'addPost'){ // when u validate ur tinymce text add the post written just before
 	    	if(!empty($_POST['title_tinymce']) && !empty($_POST['content_tinymce'])){
 
 	    		addPost($_POST['title_tinymce'],$_POST['content_tinymce']);
@@ -113,7 +113,7 @@ try{
 	    	}
 	    } 
 
-	    elseif($_GET['action'] == 'showposts'){
+	    elseif($_GET['action'] == 'showposts'){ //Back End list post
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
 	    		if (isset($_GET['count']) && $_GET['count'] >= 0) {
 
@@ -130,7 +130,7 @@ try{
 	    	}
 	    }
 
-	    elseif($_GET['action']=='editpost'){
+	    elseif($_GET['action']=='editpost'){ // Open a tinymce editor to edit a post
 	    	if(isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master"){
 	    		if (isset($_GET['editId']) && $_GET['editId'] >=0){
 
@@ -142,7 +142,7 @@ try{
 	    	}
 	    }
 
-	    elseif($_GET['action']=='editing'){
+	    elseif($_GET['action']=='editing'){ // Edit post wrote witb tinymce
 	    	if(!empty($_POST['title_tinymce']) && !empty($_POST['content_tinymce']) && isset($_GET['editId'])){
 
 	    		editing($_POST['title_tinymce'],$_POST['content_tinymce']);
@@ -159,7 +159,7 @@ try{
 	    	}
 	    } 
 
-	    elseif ($_GET['action']=='deletepost') {
+	    elseif ($_GET['action']=='deletepost') { // Delete a post
 	    	if((isset($_GET['deleteId']) && $_GET['deleteId']) && $_SESSION['authLvl'] == 'master'){
 
 	    		deletePost();
@@ -170,7 +170,7 @@ try{
 	    	}	
 	    } 
 
-	    elseif ($_GET['action'] == 'manage' ) {
+	    elseif ($_GET['action'] == 'manage' ) { // Show unvalidated comments
 	    	if (isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == 'master') {
 	    		if (isset($_GET['commentary_count']) && $_GET['commentary_count'] >= 0) {
 
@@ -193,7 +193,7 @@ try{
 	    	
 	    }
 
-	    elseif ($_GET['action'] == "deleteComm") {
+	    elseif ($_GET['action'] == "deleteComm") { // delete a commentary
 	    	if (isset($_GET['commentaryId']) && $_GET['commentaryId'] > 0 ) {
 	    		if (isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == 'master') {
 	    			deleteComment($_GET['commentaryId']);
@@ -209,10 +209,13 @@ try{
 
 	    } 
 
-	    elseif ($_GET['action'] == 'validateComm') {
+	    elseif ($_GET['action'] == 'validateComm') { // Validate a commentary
 	    	if (isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master") {
 	    		if (isset($_GET['commentaryId']) && $_GET['commentaryId']) {
 	    			validateComm($_GET['commentaryId']);
+	    		} else {
+	    			throw new Exception("Aucun ID de commentaire n'a été spécifié, désolé.");
+	    			
 	    		}
 	    		
 	    	} else {
@@ -222,10 +225,28 @@ try{
 
 		}
 
+		elseif ($_GET['action'] == 'showComms') { // Show every comments validated
+			if (isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == "master") {
+				if (isset($_GET['commentary_count']) && $_GET['commentary_count'] >= 0) {
+
+		    		$start = $_GET['commentary_count']*6;
+		    		showComms($start);
+
+		    	} else {
+
+		    		$start = 0;
+		    		showComms($start);
+		    	}
+			} else {
+				throw new Exception("Vous n'avez pas le droit d'accéder au contenu demandé.");
+				
+			}
+		}
+
 	}
 
 	else {
-		if (isset($_GET['count']) && $_GET['count'] >= 0) {
+		if (isset($_GET['count']) && $_GET['count'] >= 0) { // Show list posts
 
 	    		$start = $_GET['count']*6;
 	    		listPosts($start);
@@ -238,7 +259,7 @@ try{
 	}
 
 }
-catch (Exception $e){
+catch (Exception $e){ // Error message
 
 	$errorMessage = $e->getMessage();
 	require_once('view/front/errorView.php');

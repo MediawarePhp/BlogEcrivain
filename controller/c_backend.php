@@ -109,6 +109,14 @@ function validateComm($commentId){
 	header("Location: index.php?action=manage");
 }
 
+function showComms($start){
+	$commentManager = new CommentManager();
+	$count = $commentManager -> countValidatedComment();
+	$totalPage = getPages($count);
+	$comments = $commentManager -> GetValidatedComment($start);
+	require_once("view/back/validatedComment.php");
+}
+
 
 function test_input($data) {
 		  $data = trim($data);

@@ -9,9 +9,9 @@
 			</div>
 
 			<div class="col-sm-9 text-left"> <!-- Milieu  -->
-				<h1> Validation des commentaires </h1>  
+				<h1> Modération des commentaires validés </h1>  
 				<p> 
-					Cette page vous permet de lire, modifier ou supprimer les différents commentaires précédemment validés.
+					Cette page vous permet de lire et de supprimer les différents commentaires précédemment validés.
 				</p>
 				<hr>
 
@@ -41,7 +41,6 @@
 									</p>
 									<hr>
 									<div id="admin">
-										<a href="index.php?action=validateComm&commentaryId=<?=$comment['id']?>" class="btn btn-primary btn-block">Modifier le commentaire</a> 
 										<a href="index.php?action=deleteComm&commentaryId=<?=$comment['id']?>" onclick="return(confirm('Etes-vous sûr de vouloir supprimer ce commentaire ? '))" class="btn btn-danger btn-block">Supprimer le commentaire</a>
 									</div>
 
@@ -71,7 +70,7 @@
 							echo ' class="active"';
 						}
 
-						 ?> > <a href="index.php?action=manage&commentary_count=<?=$i?>"> <?= $i+1 ?></a></li>
+						 ?> > <a href="index.php?action=showComms&commentary_count=<?=$i?>"> <?= $i+1 ?></a></li>
 					<?php	
 					}
 					?>
