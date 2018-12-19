@@ -3,9 +3,9 @@
 
 		<div class="row content">
 
+			
 			<div class="col-sm-2 sidenav"> <!-- Colonne gauche -->
 				<p> <h2>Article</h2> blablablablablablabla</p>
-				<p> <h2>Article</h2> blablablablablablablabla</p>
 			</div>
 
 			<div class="col-sm-8 text-left"> <!-- Milieu  -->
@@ -30,7 +30,7 @@
 					<p>
 						le <strong> <?= $data['date_creation_fr'];?> </strong>
 					</p>
-					<em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
+					<em><a href="index.php?action=post&id=<?= $data['id'] ?>"> Afficher les commentaires </a></em>
 					<hr>
 
 				</div>

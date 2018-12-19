@@ -15,6 +15,8 @@
 				</p>
 				<hr>
 
+				<?php if ($totalPage != 0) : 
+				?> 
 				<div class="panel-group" id="accordion">
 					<div class="panel panel-default">
 						<?php 
@@ -24,7 +26,7 @@
 						
 					    <div class="panel-heading">
 					      <h4 class="panel-title">
-					      	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $count ?>"> Commentaire <?= $comment['id'] ?>   <?= $comment['auteur'];?></a>
+					      	<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $count ?>"> Commentaire <?= $comment['id'] ?>   le <?= $comment['date_commentaire_fr'];?></a>
 					      </h4>
 					    </div>
 					    <div id="collapse<?= $count ?>" class="panel-collapse collapse in">
@@ -32,7 +34,7 @@
 								<div class="comment">	
 									 <a href="index.php?action=post&id=<?= $comment['id_billet'] ?>">Accéder au billet commenté</a>
 									<h3> 
-										 le <strong><?= $comment['date_commentaire_fr'];?></strong>					
+										 Publié par <strong><?= $comment['auteur'];?></strong>					
 									</h3>
 									
 									<p>
@@ -57,6 +59,22 @@
 						?>
 					</div>
 				</div>
+				<?php else : ?>
+					<div class="comment">	
+
+					
+
+						<h2> 
+							Désolé mais il n'y a aucun commentaire à valider.				
+						</h2>
+						
+						<p>
+							Il va falloir attendre qu'un utilisateur soumette un commentaire !
+						</p>
+						<hr>
+
+					</div>
+				<?php endif; ?> 
 
 				<div class="pagination pagination-lg">	
 					<?php 

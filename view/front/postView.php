@@ -55,16 +55,16 @@
 
 					
 
-					<h2> 
-						Désolé mais il n'y a aucun commentaire.				
-					</h2>
-					
-					<p>
-						C'est pourquoi je te propose d'en écrire un ! Il faudra attendre que Jean valide ton commentaire pour qu'il s'affiche.
-					</p>
-					<hr>
+						<h2> 
+							Désolé mais il n'y a aucun commentaire.				
+						</h2>
+						
+						<p>
+							C'est pourquoi je te propose d'en écrire un ! Il faudra attendre que Jean valide ton commentaire pour qu'il s'affiche.
+						</p>
+						<hr>
 
-				</div>
+					</div>
 				
 				<?php
 				}
