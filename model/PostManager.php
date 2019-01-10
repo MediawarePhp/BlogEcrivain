@@ -6,18 +6,21 @@ require_once('Manager.php');
 
 class PostManager extends Manager
 {
-	public function getPosts($start)
+	public function getPosts($start) // Show every posts
 	{
 
 		$db = $this -> dbConnect();
 
-		$query = "SELECT billets.id, billets.titre, billets.contenu, DATE_FORMAT(billets.date_creation, '%d/%m/%Y à %Hh%i') AS date_creation_fr, COUNT(commentaires.id) AS countCommentaire FROM billets  LEFT JOIN commentaires  ON billets.id = commentaires.id_billet AND validation = 1 GROUP BY billets.id ORDER BY date_creation DESC LIMIT $start, 6";
+		$query = "SELECT billets.id, billets.titre, billets.contenu, DATE_FORMAT(billets.date_creation, '%d/%m/%Y à %Hh%i') 
+			AS date_creation_fr, COUNT(commentaires.id) AS countCommentaire 
+			FROM billets  LEFT JOIN commentaires  ON billets.id = commentaires.id_billet
+			AND validation = 1 GROUP BY billets.id ORDER BY date_creation DESC LIMIT $start, 6";
 		$req = $db->query($query) or trigger_error($db->error."[$query]");
 		return $req;
 
 	}
 
-	public function addPost($titre,$contenu)
+	public function addPost($titre,$contenu) // Add one post
 	{
 		$db = $this -> dbConnect();
 
@@ -28,7 +31,7 @@ class PostManager extends Manager
 
 	}
 
-	public function updatePost($titre,$contenu,$postId)
+	public function updatePost($titre,$contenu,$postId) // Update one post
 	{
 		$db = $this -> dbConnect();
 		$query = "UPDATE billets SET titre=? , contenu=? WHERE id=?";
@@ -38,7 +41,7 @@ class PostManager extends Manager
 	}
 
 
-	public function getPost($postId)
+	public function getPost($postId) // Show one post
 	{
 		$db = $this -> dbConnect();
 
@@ -50,7 +53,7 @@ class PostManager extends Manager
 
 	}
 
-	public function countAll()
+	public function countAll() // Count the number of posts
 	{
 		$db = $this -> dbConnect();
 
@@ -61,7 +64,7 @@ class PostManager extends Manager
 		return $count;
 	}
 
-	public function deletePost($postId)
+	public function deletePost($postId) // delete a post
 	{
 
 		$db = $this -> dbConnect();

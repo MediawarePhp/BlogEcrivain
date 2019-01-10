@@ -5,7 +5,7 @@ require('controller/c_backend.php');
 
 try{
 	if (isset($_GET['action'])) {
-	    if ($_GET['action'] == 'listPosts') { // List post
+	    if ($_GET['action'] == 'listPosts') { // Show every posts with a pagination
 	    	if (isset($_GET['count']) && $_GET['count'] >= 0) {
 
 	    		$start = $_GET['count']*6;
