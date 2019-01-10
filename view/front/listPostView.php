@@ -5,7 +5,7 @@
 
 			
 			<div class="col-sm-2 sidenav"> <!-- Colonne gauche -->
-				<p> <h2>Article</h2> blablablablablablabla</p>
+
 			</div>
 
 			<div class="col-sm-8 text-left"> <!-- Milieu  -->
@@ -73,13 +73,7 @@
 
 			<div class="col-sm-2 sidenav"> <!-- Colonne droite -->
 
-				<div class="well">
-					<p>PUB</p>
-				</div>
-
-				<div class="well">
-					<p>PUB </p>
-				</div>
+				
 				
 			</div>
 
