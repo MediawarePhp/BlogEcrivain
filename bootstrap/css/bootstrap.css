@@ -53,6 +53,8 @@ a h1, a p
   width: 100%;
   background-color: #222;
   margin-top: 5px;
+    position: fixed;
+  bottom: 0;
 }
 .footer-copyright 
 {
@@ -61,8 +63,7 @@ a h1, a p
 
 .footer-bottom
 {
-  position: fixed;
-  bottom: 0;
+
 }
 
 
@@ -4780,7 +4781,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination {
   display: inline-block;
   padding-left: 0;
-  margin: 20px 0;
+  margin-bottom: 40px;
   border-radius: 4px;
 }
 .pagination > li {
