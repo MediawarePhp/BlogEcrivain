@@ -170,6 +170,15 @@ try{
 	    	}	
 	    } 
 
+
+
+
+///////
+///////				ROUTE : CA SERT A FAIRE DES TRUCS
+///////
+
+
+	    
 	    elseif ($_GET['action'] == 'manage' ) { // Show unvalidated comments
 	    	if (isset($_SESSION['authLvl']) && $_SESSION['authLvl'] == 'master') {
 	    		if (isset($_GET['commentary_count']) && $_GET['commentary_count'] >= 0) {

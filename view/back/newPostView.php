@@ -25,12 +25,12 @@
 					<hr>
 
 					<h2>
-						Insérez votre titre dans le premier éditeur
+						Titre du billet
 					</h2>
 					<form method="post" action="index.php?action=addPost">
 						<textarea id="title_tinymce" name="title_tinymce">Insérez votre titre</textarea>
 						<h2>
-							Insérez votre texte dans le second éditeur
+							Contenu du billet
 						</h2>
 						<textarea id="content_tinymce" name="content_tinymce">C'est ici que commence votre histoire ... </textarea>
 						<button type="submit" class="btn btn-default"> <span class="glyphicon glyphicon-ok-sign"></span> Ecrire un billet</button>

@@ -4,8 +4,7 @@
 		<div class="row content">
 
 			<div class="col-sm-2 sidenav"> <!-- Colonne gauche -->
-				<p> <h2>Article</h2> blablablablablablabla</p>
-				<p> <h2>Article</h2> blablablablablablablabla</p>
+				
 			</div>
 
 			<div class="col-sm-9 text-left"> <!-- Milieu  -->
