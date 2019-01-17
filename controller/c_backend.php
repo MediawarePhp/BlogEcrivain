@@ -80,11 +80,11 @@ function addPost($title,$content){
 
 }
 
-function deletePost(){
+function deletePost($count){
 
 	$postManager = new PostManager();
 	$postManager -> deletePost($_GET['deleteId']);
-	header("Location: index.php?action=showposts");
+	header("Location: index.php?action=showposts&count=$count");
 
 }
 

@@ -18,7 +18,19 @@
 					<div class="panel panel-default">
 						<?php 
 						$count = "1";
-						while($data = $posts->fetch()){ ?>
+						while($data = $posts->fetch()){ 
+
+							if (isset($_GET['count'])) {
+								
+								$page = $_GET['count'];
+							}else{
+								
+								$page = 0;
+							}
+
+							?>
+
+							
 
 						
 					    <div class="panel-heading">
@@ -41,7 +53,7 @@
 									<hr>
 									<div id="admin">
 										<a href="index.php?action=editpost&editId=<?=$data['id']?>" class="btn btn-primary btn-block">Modifier le billet</a> 
-										<a href="index.php?action=deletepost&deleteId=<?=$data['id']?>" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette entrée?'))" class="btn btn-danger btn-block">Supprimer le billet</a>
+										<a href="index.php?action=deletepost&deleteId=<?=$data['id']?>&count=<?=$page ?>" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette entrée?'))" class="btn btn-danger btn-block">Supprimer le billet</a>
 									</div>
 
 

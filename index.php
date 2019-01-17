@@ -161,8 +161,8 @@ try{
 
 	    elseif ($_GET['action']=='deletepost') { // Delete a post
 	    	if((isset($_GET['deleteId']) && $_GET['deleteId']) && $_SESSION['authLvl'] == 'master'){
-
-	    		deletePost();
+	    		$count = $_GET['count'];
+	    		deletePost($count);
 
 	    	} else {
 	    		throw new Exception("Vous n'avez pas le droit de faire cette action.");
